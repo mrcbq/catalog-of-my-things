@@ -16,7 +16,7 @@ class Label
     @items << item
   end
 
-  def self.show_all(labels)
+  def self.list_all_labels(labels)
     puts "All Labels:"
     labels.each do |label|
       puts "Label: #{label.title}"
