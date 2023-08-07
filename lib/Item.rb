@@ -11,10 +11,6 @@ class Item
     @archived = false
   end
 
-  def add_comment(comment)
-    @comments << comment
-  end
-
   def move_to_archive
     if can_be_archived?
       @archived = true
