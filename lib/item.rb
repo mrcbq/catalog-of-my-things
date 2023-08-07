@@ -16,7 +16,7 @@ class Item
 
   private
 
-  attr_reader :id
+  attr_reader :id, :archived
 
   def archived?
     @archived
