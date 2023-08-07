@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :id, :genre, :author, :source, :label, :published_date, :archived
+  attr_accessor :genre, :author, :source, :label, :published_date
 
   def initialize(id, genre, author, source, label, published_date)
     @id = id || Random.rand(1..1000)
@@ -20,11 +20,20 @@ class Item
     end
   end
 
+  private
+
+  def id
+    @id
+  end
+
+  def archived?
+    @archived
+  end
+
+
   def can_be_archived?
     (Date.today - @published_date).to_i >= 3650
   end
-
-  private
 
   def set_genre(genre)
     return nil unless genre.is_a?(Genre)
