@@ -53,5 +53,3 @@ end
 
 menu = Menu.new
 menu.main
-
-
