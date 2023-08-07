@@ -17,7 +17,7 @@ class Label
   end
 
   def self.list_all_labels(labels)
-    puts "All Labels:"
+    puts 'All Labels:'
     labels.each do |label|
       puts "Label: #{label.title}"
     end
