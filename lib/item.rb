@@ -1,5 +1,6 @@
 class Item
   attr_accessor :published_date
+  attr_reader :genre, :author, :label
 
   def initialize(published_date:)
     @id = id || Random.rand(1..1000)
@@ -22,36 +23,27 @@ class Item
   end
 
   def can_be_archived?
-    return true if (Date.today - @published_date).to_i >= 3650
-
-    false
+    true if (Date.today - @published_date).to_i >= 3650
   end
 
-  def genre(genre)
+  def genre=(new_genre)
     return nil unless genre.is_a?(Genre)
 
-    genre.add_item(self)
-    genre
+    @genre = new_genre
+    new_genre.add_item(self)
   end
 
-  def author(author)
-    return nil unless author.is_a?(Author)
+  def author=(new_author)
+    return nil unless new_author.is_a?(Author)
 
+    @author = new_author
     author.add_item(self)
-    author
   end
 
-  def source(source)
-    return nil unless source.is_a?(Source)
+  def label(new_label)
+    return nil unless new_label.is_a?(Label)
 
-    source.add_item(self)
-    source
-  end
-
-  def label(label)
-    return nil unless label.is_a?(Label)
-
+    @label = new_label
     label.add_item(self)
-    label
   end
 end
