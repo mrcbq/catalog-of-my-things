@@ -10,20 +10,7 @@ class Item
 
   def move_to_archive
     return unless can_be_archived?
-
     @archived = true
-  end
-
-  private
-
-  attr_reader :id, :archived
-
-  def archived?
-    @archived
-  end
-
-  def can_be_archived?
-    true if (Date.today - @published_date).to_i >= 3650
   end
 
   def genre=(new_genre)
@@ -42,5 +29,17 @@ class Item
     return nil unless new_label.is_a?(Label)
     @label = new_label
     label.add_item(self)
+  end
+
+  private
+
+  attr_reader :id
+
+  def archived?
+    @archived
+  end
+
+  def can_be_archived?
+    true if (Date.today - @published_date).to_i >= 3650
   end
 end
