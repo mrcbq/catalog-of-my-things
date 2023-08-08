@@ -34,7 +34,7 @@ class App
     Label.list_all_labels(@labels)
   end
 
-  def list_all_music_album
+  def list_all_music_albums
     puts ''.center(50, '*')
     puts 'The list is empty, please create a Music Album!' if @music_albums.empty?
     puts 'List of all music albums:'
