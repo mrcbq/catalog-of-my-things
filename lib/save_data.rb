@@ -11,7 +11,9 @@ end
 
 def save_authors
   authors_arr = []
-  @authors.each { |author| authors_arr.push({ id: author.id, first_name: author.first_name, last_name: author.last_name }) }
+  @authors.each do |author|
+    authors_arr.push({ id: author.id, first_name: author.first_name, last_name: author.last_name })
+  end
   File.write('authors.json', authors_arr.to_json) if @authors.any?
   puts 'Saving authors to database...'
 end
