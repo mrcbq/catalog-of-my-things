@@ -24,6 +24,7 @@ class App
   end
 
   def list_all_genres()
+    puts 'The list is empty, please create a Genre!' if @genres.empty?
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
     end
