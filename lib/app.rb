@@ -8,6 +8,8 @@ require_relative 'genre'
 require 'date'
 require_relative 'save_game_author_data'
 require_relative 'load_game_author_data'
+require_relative 'load_music_genre'
+require_relative 'save_music_genre'
 
 class App
   attr_accessor :music_albums, :genres, :books, :labels
