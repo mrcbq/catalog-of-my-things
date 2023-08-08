@@ -4,7 +4,9 @@ require_relative 'genre'
 
 def save_music_albums
   music_albums_arr = []
-  @music_albums.each { |music_album| music_albums_arr.push({ published_date: music_album.published_date, on_spotify: music_album.on_spotify }) }
+  @music_albums.each do |music_album|
+    music_albums_arr.push({ published_date: music_album.published_date, on_spotify: music_album.on_spotify })
+  end
   File.write('music_albums.json', music_albums_arr.to_json) if @music_albums.any?
   puts 'Saving music_albums to database...'
 end

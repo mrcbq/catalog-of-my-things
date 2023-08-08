@@ -12,7 +12,8 @@ def load_music_albums
   end
   music_albums = []
   stored_music_albums.map do |music_album|
-    music_albums << MusicAlbum.new(published_date: Date.parse(music_album['published_date']), on_spotify: music_album['on_spotify'])
+    music_albums << MusicAlbum.new(published_date: Date.parse(music_album['published_date']),
+                                   on_spotify: music_album['on_spotify'])
   end
   music_albums
 end
