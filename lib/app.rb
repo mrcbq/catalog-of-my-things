@@ -16,13 +16,13 @@ class App
     exit
   end
 
-  def list_all_genres(@genres)
-    genres.each_with_index do |genre, index|
+  def list_all_genres()
+    @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
     end
   end
 
-  def list_all_music_albums(@music_albums)
+  def list_all_music_albums()
     puts 'List of all music albums:'
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
@@ -31,7 +31,7 @@ class App
     end
   end
 
-  def add_music_album(items)
+  def add_music_album()
     print 'Enter published date YYYY-MM-DD: '
     date_input = gets.chomp
     begin
@@ -48,7 +48,7 @@ class App
     on_spotify = gets.chomp.downcase == 'true'
 
     music_album = MusicAlbum.new(published_date: published_date, on_spotify: on_spotify)
-    items << music_album
+    music_albums << music_album
 
     puts 'Music album added successfully!'
   end
