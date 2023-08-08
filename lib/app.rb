@@ -38,7 +38,8 @@ class App
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
 
-      puts "#{index + 1}. #(Published: #{album.published_date}, Archived: #{album.archived?})"
+      spotify_status = album.on_spotify ? 'Yes' : 'No'
+      puts "#{index + 1}. Published: #{album.published_date}, Archived: #{album.archived?}, Spotify: #{spotify_status}"
     end
   end
 
