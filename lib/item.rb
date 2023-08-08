@@ -39,7 +39,7 @@ class Item
     @archived = can_be_archived?
     @archived
   end
-  
+
   private
 
   attr_reader :id

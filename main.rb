@@ -42,7 +42,6 @@ class Menu
     selected_option = @options[choice]
     return exit_program if selected_option.nil?
 
-    selected_option
     @app.send(selected_option)
   end
 
