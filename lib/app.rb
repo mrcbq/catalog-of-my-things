@@ -1,10 +1,12 @@
 require_relative 'item'
 require_relative 'game'
 require_relative 'author'
+require_relative 'save_data'
+require_relative 'load_data'
 
 class App
   def initialize
-    @games = []
+    @games = load_games
     @authors = []
   end
 
@@ -33,6 +35,7 @@ class App
   end
 
   def exit_program
+    save_games
     puts 'Exiting the program...'
     exit
   end
