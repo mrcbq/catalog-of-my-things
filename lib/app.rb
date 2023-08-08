@@ -2,13 +2,14 @@ require_relative 'item'
 require_relative 'genre'
 require_relative 'music_album'
 require_relative 'save_music_genre'
+require_relative 'load_music_genre'
 require 'date'
 
 class App
   attr_accessor :music_albums, :genres
 
   def initialize
-    @music_albums = []
+    @music_albums = load_music_albums
     @genres = []
   end
 
