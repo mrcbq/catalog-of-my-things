@@ -15,7 +15,6 @@ RSpec.describe App do
     it 'saves music_albums to JSON file' do
       allow(File).to receive(:write)
       expect_any_instance_of(App).to receive(:save_music_albums)
-      
       @app.save_music_albums
     end
   end
