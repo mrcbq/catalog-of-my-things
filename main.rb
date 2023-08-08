@@ -28,10 +28,12 @@ class Menu
 
     loop do
       main_menu
+      puts
       print 'Choice: '
       choice = gets.chomp.to_i
       user_choice(choice)
       puts ''.center(50, '*')
+      puts
     end
   end
 

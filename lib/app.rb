@@ -23,7 +23,7 @@ class App
     @authors = load_authors
   end
 
-  def list_all_genres()
+  def list_all_genres
     puts 'The list is empty, please create a Genre!' if @genres.empty?
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
@@ -34,7 +34,7 @@ class App
     Label.list_all_labels(@labels)
   end
 
-  def list_all_music_albums()
+  def list_all_music_albums
     puts ''.center(50, '*')
     puts 'The list is empty, please create a Music Album!' if @music_albums.empty?
     puts 'List of all music albums:'
@@ -46,25 +46,21 @@ class App
     end
   end
 
-  def add_music_album()
+  def add_music_album
     print 'Enter published date YYYY-MM-DD: '
     date_input = gets.chomp
     begin
       published_date = Date.parse(date_input)
       current_date = Date.today
       difference = (current_date - published_date).to_i / 365
-
       puts "The album was published #{difference} years ago"
     rescue ArgumentError
       puts 'invalid date format. Please enter the date in YYYY-MM-DD format'
     end
-
     print 'Is it on Spotify? (true/false): '
     on_spotify = gets.chomp.downcase == 'true'
-
     music_album = MusicAlbum.new(published_date: published_date, on_spotify: on_spotify)
     music_albums << music_album
-
     puts 'Music album added successfully!'
   end
 
