@@ -1,6 +1,7 @@
 require_relative 'music_album'
 require_relative 'genre'
 require 'json'
+require 'date'
 
 def load_music_albums
   stored_music_albums = begin
@@ -11,7 +12,7 @@ def load_music_albums
   end
   music_albums = []
   stored_music_albums.map do |music_album|
-    music_albums << Game.new(music_album['published_date'], music_album['on_spotify'])
+    music_albums << MusicAlbum.new(published_date: Date.parse(music_album['published_date']), on_spotify: music_album['on_spotify'])
   end
   music_albums
 end
