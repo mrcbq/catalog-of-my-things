@@ -8,20 +8,24 @@ require_relative 'genre'
 require 'date'
 require_relative 'save_game_author_data'
 require_relative 'load_game_author_data'
+require_relative 'load_music_genre'
+require_relative 'save_music_genre'
 
 class App
   attr_accessor :music_albums, :genres, :books, :labels
 
   def initialize
-    @music_albums = []
-    @genres = []
+    @music_albums = load_music_albums
+    @genres = load_genre
     @books = []
     @labels = []
     @games = load_games
     @authors = load_authors
   end
 
+
   def list_all_genres
+    puts 'The list is empty, please create a Genre!' if @genres.empty?
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
     end
@@ -31,16 +35,20 @@ class App
     Label.list_all_labels(@labels)
   end
 
-  def list_all_music_albums
+
+  def list_all_music_album
+    puts ''.center(50, '*')
+    puts 'The list is empty, please create a Music Album!' if @music_albums.empty?
     puts 'List of all music albums:'
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
-
-      puts "#{index + 1}. #(Published: #{album.published_date}, Archived: #{album.archived?})"
+      spotify_status = album.on_spotify ? 'Yes' : 'No'
+      puts "#{index + 1}. Published: #{album.published_date}, Archived: #{album.archived?}, Spotify: #{spotify_status}"
     end
   end
 
   def add_music_album
+
     print 'Enter published date YYYY-MM-DD: '
     date_input = gets.chomp
     begin
@@ -99,6 +107,8 @@ class App
     save_games
     save_authors
     puts 'Exiting the program...'
+    save_music_albums
+    save_genres
     exit
   end
 end
