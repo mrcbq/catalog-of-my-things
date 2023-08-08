@@ -15,7 +15,7 @@ class Item
   end
 
   def genre=(new_genre)
-    return unless genre.is_a?(Genre)
+    return unless new_genre.is_a?(Genre)
 
     @genre = new_genre
     new_genre.add_item(self)
@@ -44,6 +44,6 @@ class Item
   end
 
   def can_be_archived?
-    true if (Date.today - @published_date).to_i >= 3650
+    (Date.today - @published_date).to_i >= 3650
   end
 end
