@@ -10,12 +10,13 @@ class App
 
   def initialize
     @music_albums = load_music_albums
-    @genres = []
+    @genres = load_genre
   end
 
   def exit_program
     puts 'Exiting the program...'
     save_music_albums
+    save_genres
     exit
   end
 
