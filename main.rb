@@ -5,16 +5,15 @@ class Menu
     @app = App.new
     @options = {
       1 => :list_all_books,
-      2 => :list_all_music_albums,
+      2 => [:list_all_music_albums, @app.music_albums],
       3 => :list_of_games,
-      4 => :list_all_genres,
+      4 => [:list_all_genres, @app.genres],
       5 => :list_all_labels,
       6 => :list_all_authors,
-      7 => :list_all_sources,
-      8 => :add_book,
-      9 => :add_music_album,
-      10 => :add_game,
-      11 => :exit_program
+      7 => :add_book,
+      8 => [:add_music_album, @app.music_albums],
+      9 => :add_game,
+      10 => :exit_program
     }
   end
 
@@ -43,7 +42,8 @@ class Menu
     selected_option = @options[choice]
     return exit_program if selected_option.nil?
 
-    @app.send(selected_option)
+    method_name, data_array = selected_option
+    @app.send(method_name, data_array)
   end
 
   def option_to_text(option)
