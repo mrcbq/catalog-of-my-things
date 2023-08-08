@@ -1,8 +1,8 @@
 require_relative 'item'
 require_relative 'game'
 require_relative 'author'
-require_relative 'save_data'
-require_relative 'load_data'
+require_relative 'save_game_author_data'
+require_relative 'load_game_author_data'
 
 class App
   def initialize

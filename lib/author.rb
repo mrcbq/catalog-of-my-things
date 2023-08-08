@@ -3,7 +3,7 @@ require_relative 'item'
 # associated to the item class
 class Author
   attr_accessor :first_name, :last_name
-  attr_reader :id
+  attr_reader :id,:items
 
   def initialize(first_name, last_name)
     @id = generate_id
