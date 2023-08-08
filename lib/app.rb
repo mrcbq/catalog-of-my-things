@@ -23,7 +23,6 @@ class App
     @authors = load_authors
   end
 
-
   def list_all_genres
     puts 'The list is empty, please create a Genre!' if @genres.empty?
     @genres.each_with_index do |genre, index|
@@ -41,6 +40,7 @@ class App
     puts 'List of all music albums:'
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
+
       spotify_status = album.on_spotify ? 'Yes' : 'No'
       puts "#{index + 1}. Published: #{album.published_date}, Archived: #{album.archived?}, Spotify: #{spotify_status}"
     end
