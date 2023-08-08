@@ -15,10 +15,18 @@ class App
   def initialize
     @music_albums = []
     @genres = []
-    @books = []
-    @labels = []
+    @books = Book.load_all_books
+    @labels = Label.load_all_labels
     @games = load_games
     @authors = load_authors
+  end
+
+  def save_books
+    Book.save_all_books(@books)
+  end
+
+  def save_labels
+    Label.save_all_labels(@labels)
   end
 
   def list_all_genres()
@@ -96,6 +104,8 @@ class App
   end
 
   def exit_program
+    save_labels
+    save_books
     save_games
     save_authors
     puts 'Exiting the program...'
