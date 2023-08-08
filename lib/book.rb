@@ -1,12 +1,15 @@
 require_relative 'item'
+require_relative 'label'
 
 class Book < Item
-  attr_accessor :publisher, :cover_state
+  attr_accessor :publisher, :cover_state, :label
 
   def initialize(options = {})
-    super(options[:genre], options[:author], options[:source], options[:label], options[:published_date])
+    super(published_date: options[:published_date])
     @publisher = options[:publisher]
+    @id = Random.rand(1..1000)
     @cover_state = options[:cover_state]
+    @label = options[:label]
   end
 
   def self.list_all_books(books)
@@ -16,20 +19,19 @@ class Book < Item
         puts 'No books added yet'
       else
         books.each do |book|
-          puts "Book ID: #{book.id}"
+          puts "Book ID: #{book.instance_variable_get(:@id)}"
           # puts "Book Name: #{book.label.title}"
           # puts "Author: #{book.author.first_name} #{book.author.last_name}"
-          puts "Published by: #{book.publisher} on: #{book.publish_date}"
-          # puts "Genre: #{book.genre.name}"
-          puts "Color: #{book.label.color}/n"
+          puts "Published by: #{book.publisher} on: #{book.published_date}"
+          puts "Color: #{book.label.color}\n"
         end
       end
     end
   end
 
-  def self.add_book
+  def add_book(books, labels)
     print 'Enter book title: '
-    gets.chomp
+    title = gets.chomp
 
     print 'Enter publisher: '
     publisher = gets.chomp
@@ -46,18 +48,29 @@ class Book < Item
       return
     end
 
-    new_book = Book.new(
+    print 'Enter label title: '
+    label_title = gets.chomp
+    print 'Enter label color: '
+    color = gets.chomp
+
+    label = Label.new(id: labels.length + 1, title: label_title, color: color)
+    labels << label
+
+    book = Book.new(
+      title: title,
       publisher: publisher,
       cover_state: cover_state,
-      published_date: published_date
+      published_date: published_date,
+      label: label
     )
 
-    @books << new_book
-
+    books << book
     puts 'Book added successfully!'
   end
 
   private
+
+  attr_reader :id
 
   def can_be_archived?
     super || @cover_state == 'bad'
