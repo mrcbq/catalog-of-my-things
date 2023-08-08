@@ -15,5 +15,16 @@ def load_games
   games
 end
 
-
-
+def load_authors
+  stored_authors = begin
+    JSON.parse(File.read('authors.json'))
+  rescue StandardError => e
+    puts "Error reading 'authors.json': #{e.message}"
+    []
+  end
+  authors = []
+  stored_authors.map do |author_data|
+    authors << Author.new(author_data['first_name'], author_data['last_name'])
+  end
+  authors
+end
