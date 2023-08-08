@@ -27,7 +27,7 @@ class App
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
 
-      puts "#{index + 1}. #(Published: #{album.published_date}, Archived: #{album.archived})"
+      puts "#{index + 1}. #(Published: #{album.published_date}, Archived: #{album.archived?})"
     end
   end
 
@@ -37,9 +37,9 @@ class App
     begin
       published_date = Date.parse(date_input)
       current_date = Date.today
-      difference = (current_date - published_date).to_i
+      difference = (current_date - published_date).to_i / 365
 
-      puts "The album was publised #{difference} days ago"
+      puts "The album was published #{difference} years ago"
     rescue ArgumentError
       puts 'invalid date format. Please enter the date in YYYY-MM-DD format'
     end
