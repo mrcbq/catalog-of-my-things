@@ -27,22 +27,16 @@ class Item
   end
 
   def genre=(new_genre)
-    return nil unless genre.is_a?(Genre)
-
     @genre = new_genre
     new_genre.add_item(self)
   end
 
   def author=(new_author)
-    return nil unless new_author.is_a?(Author)
-
     @author = new_author
     author.add_item(self)
   end
 
-  def label(new_label)
-    return nil unless new_label.is_a?(Label)
-
+  def label=(new_label)
     @label = new_label
     label.add_item(self)
   end

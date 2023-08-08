@@ -3,9 +3,10 @@ require_relative 'item'
 class Label
   attr_accessor :color, :title
 
-  def initialize(id:, title:)
+  def initialize(id:, title:, color:)
     @id = id
     @title = title
+    @color = color
     @items = []
   end
 
@@ -19,7 +20,7 @@ class Label
   def self.list_all_labels(labels)
     puts 'All Labels:'
     labels.each do |label|
-      puts "Label: #{label.title}"
+      puts "Label Title: #{label.title}"
     end
   end
 

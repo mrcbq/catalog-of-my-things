@@ -20,7 +20,7 @@ class Book < Item
       else
         books.each do |book|
           puts "Book ID: #{book.instance_variable_get(:@id)}"
-          # puts "Book Name: #{book.label.title}"
+          puts "Book Name: #{book.label.title}"
           # puts "Author: #{book.author.first_name} #{book.author.last_name}"
           puts "Published by: #{book.publisher} on: #{book.published_date}"
           puts "Color: #{book.label.color}\n"
@@ -30,24 +30,44 @@ class Book < Item
   end
 
   def add_book(books, labels)
+    title = book_title
+    publisher = input_publisher
+    cover_state = input_cover_state
+    published_date = input_published_date
+    label = input_label(labels)
+
+    book = create_book(title, publisher, cover_state, published_date, label)
+    books << book
+    puts 'Book added successfully!'
+  end
+
+  private
+
+  def book_title
     print 'Enter book title: '
-    title = gets.chomp
+    gets.chomp
+  end
 
+  def input_publisher
     print 'Enter publisher: '
-    publisher = gets.chomp
+    gets.chomp
+  end
 
+  def input_cover_state
     print 'Enter cover state (good/bad): '
-    cover_state = gets.chomp
+    gets.chomp
+  end
 
+  def input_published_date
     print 'Enter published date YYYY-MM-DD: '
     date_input = gets.chomp
-    begin
-      published_date = Date.parse(date_input)
-    rescue ArgumentError
-      puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
-      return
-    end
+    Date.parse(date_input)
+  rescue ArgumentError
+    puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
+    retry
+  end
 
+  def input_label(labels)
     print 'Enter label title: '
     label_title = gets.chomp
     print 'Enter label color: '
@@ -55,20 +75,18 @@ class Book < Item
 
     label = Label.new(id: labels.length + 1, title: label_title, color: color)
     labels << label
+    label
+  end
 
-    book = Book.new(
+  def create_book(title, publisher, cover_state, published_date, label)
+    Book.new(
       title: title,
       publisher: publisher,
       cover_state: cover_state,
       published_date: published_date,
       label: label
     )
-
-    books << book
-    puts 'Book added successfully!'
   end
-
-  private
 
   attr_reader :id
 
