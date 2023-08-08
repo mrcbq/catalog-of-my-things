@@ -17,4 +17,21 @@ RSpec.describe MusicAlbum do
       expect(album.on_spotify).to be false
     end
   end
+
+  describe 'can_be_archived? method' do
+    it 'returns false if not on Spotify' do
+      album = MusicAlbum.new(published_date: published_date, on_spotify: false)
+      expect(album.archived?).to be false
+    end
+
+    it 'returns true if on Spotify and can be archived' do
+      album = MusicAlbum.new(published_date: published_date, on_spotify: true)
+      expect(album.archived?).to be true
+    end
+
+    it 'returns false if on Spotify but cannot be archived' do
+      album = MusicAlbum.new(published_date: Date.today, on_spotify: true)
+      expect(album.archived?).to be false
+    end
+  end
 end
