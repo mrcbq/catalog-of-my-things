@@ -10,11 +10,10 @@ class Menu
       4 => :list_all_genres,
       5 => :list_all_labels,
       6 => :list_all_authors,
-      7 => :list_all_sources,
-      8 => :add_book,
-      9 => :add_music_album,
-      10 => :add_game,
-      11 => :exit_program
+      7 => :add_book,
+      8 => :add_music_album,
+      9 => :add_game,
+      10 => :exit_program
     }
   end
 
