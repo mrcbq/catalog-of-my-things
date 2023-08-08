@@ -35,13 +35,14 @@ class Item
     label.add_item(self)
   end
 
+  def archived?
+    @archived = can_be_archived?
+    @archived
+  end
+  
   private
 
   attr_reader :id
-
-  def archived?
-    @archived
-  end
 
   def can_be_archived?
     (Date.today - @published_date).to_i >= 3650
