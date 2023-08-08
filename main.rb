@@ -41,7 +41,7 @@ class Menu
 
   def user_choice(choice)
     selected_option = @options[choice]
-    return exit_program if selected_option.nil?
+    selected_option = @options[10] if selected_option.nil?
 
     @app.send(selected_option)
   end
