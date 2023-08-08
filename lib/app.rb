@@ -17,8 +17,8 @@ class App
   def initialize
     @music_albums = load_music_albums
     @genres = load_genre
-    @books = []
-    @labels = []
+    @books = Book.load_all_books
+    @labels = Label.load_all_labels
     @games = load_games
     @authors = load_authors
   end
@@ -71,6 +71,14 @@ class App
   def add_book
     book = Book.new
     book.add_book(@books, @labels, @genres, @authors)
+  end
+
+  def save_books
+    Book.save_all_books(@books)
+  end
+
+  def save_labels
+    Label.save_all_labels(@labels)
   end
 
   def list_of_games
