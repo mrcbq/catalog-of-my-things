@@ -1,14 +1,17 @@
 require_relative 'item'
-
-require_relative 'genre'
-require_relative 'music_album'
+require_relative 'book'
+require_relative 'label'
 require 'date'
 
 class App
-  attr_accessor :music_albums, :genres
+  attr_accessor :music_albums, :genres, :books, :labels
 
-  require_relative 'label'
-  require 'date'
+  def initialize
+    @music_albums = []
+    @genres = []
+    @books = []
+    @labels = []
+  end
 
   class App
     attr_accessor :music_albums, :genres, :labels
@@ -64,5 +67,14 @@ class App
 
       puts 'Music album added successfully!'
     end
+  end
+
+  def list_all_books
+    Book.list_all_books(@books)
+  end
+
+  def add_book
+    book = Book.new
+    book.add_book(@books, @labels)
   end
 end
