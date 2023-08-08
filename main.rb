@@ -31,6 +31,7 @@ class Menu
       print 'Choice: '
       choice = gets.chomp.to_i
       user_choice(choice)
+      puts ''.center(50, '*')
     end
   end
 
