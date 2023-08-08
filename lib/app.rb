@@ -1,6 +1,7 @@
 require_relative 'item'
 require_relative 'genre'
 require_relative 'music_album'
+require_relative 'save_music_genre'
 require 'date'
 
 class App
@@ -13,6 +14,7 @@ class App
 
   def exit_program
     puts 'Exiting the program...'
+    save_music_albums
     exit
   end
 
