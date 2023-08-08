@@ -25,9 +25,9 @@ def load_genre
     puts "Error reading 'genre.json': #{e.message}"
     []
   end
-  genre = []
+  genres = []
   stored_genre.map do |genre|
-    genre << Genre.new(genre['name'])
+    genres << Genre.new(genre['name'])
   end
-  genre
+  genres
 end
