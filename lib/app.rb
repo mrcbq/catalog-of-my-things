@@ -16,18 +16,18 @@ class App
     exit
   end
 
-  def list_all_genres(genres)
+  def list_all_genres(@genres)
     genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
     end
   end
 
-  def list_all_music_albums(items)
+  def list_all_music_albums(@music_albums)
     puts 'List of all music albums:'
-    items.each_with_index do |item, index|
-      next unless item.is_a?(MusicAlbum)
+    @music_albums.each_with_index do |album, index|
+      next unless album.is_a?(MusicAlbum)
 
-      puts "#{index + 1}. #{item.title} (Published: #{item.published_date}, Archived: #{item.archived})"
+      puts "#{index + 1}. #(Published: #{album.published_date}, Archived: #{album.archived})"
     end
   end
 
