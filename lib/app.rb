@@ -34,6 +34,8 @@ class App
   end
 
   def list_all_music_albums()
+    puts ''.center(50, '*')
+    puts 'The list is empty, please create a Music Album!' if @music_albums.empty?
     puts 'List of all music albums:'
     @music_albums.each_with_index do |album, index|
       next unless album.is_a?(MusicAlbum)
