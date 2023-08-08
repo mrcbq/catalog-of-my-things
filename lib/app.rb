@@ -7,7 +7,7 @@ require_relative 'load_data'
 class App
   def initialize
     @games = load_games
-    @authors = []
+    @authors = load_authors
   end
 
   def list_of_games
@@ -36,6 +36,7 @@ class App
 
   def exit_program
     save_games
+    save_authors
     puts 'Exiting the program...'
     exit
   end
