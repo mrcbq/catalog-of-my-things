@@ -126,7 +126,7 @@ class Book < Item
   def input_cover_state
     print 'Enter cover state (good/bad): '
     cover_state = gets.chomp.downcase
-    cover_state = 'bad' unless ['good', 'bad'].include?(cover_state)
+    cover_state = 'bad' unless %w[good bad].include?(cover_state)
     cover_state
   end
 
