@@ -131,9 +131,9 @@ rspec solver_spec.rb
 
 👤 **Romans Spilaks**
 
-- GitHub: [@romans](https://github.com/romans)
-- Twitter: [@romans](https://twitter.com/romans)
-- LinkedIn: [romans](https://www.linkedin.com/in/romans/)
+- GitHub: [@romans-adi](https://github.com/romans-adi/)
+- Twitter: [@obj583](https://twitter.com/obj583/)
+- LinkedIn: [Romans Špiļaks](https://www.linkedin.com/in/obj513/)
 
 👤 **Lincoln Gibson**
 
