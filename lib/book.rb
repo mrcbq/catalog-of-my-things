@@ -120,12 +120,6 @@ class Book < Item
   end
 
   def input_cover_state
-<<<<<<< HEAD
-    print 'Enter cover state (good/bad): '
-    cover_state = gets.chomp.downcase
-    cover_state = 'bad' unless %w[good bad].include?(cover_state)
-    cover_state
-=======
     loop do
       print 'Enter cover state (good/bad): '
       cover_state = gets.chomp.downcase
@@ -133,7 +127,6 @@ class Book < Item
 
       puts 'Invalid input. Please enter either "good" or "bad" for the cover state.'
     end
->>>>>>> 9d0d2be3ecb695f79f1e9894a81f15fa53c4bf9b
   end
 
   def input_genre_name
