@@ -101,9 +101,6 @@ To run this project locally, follow these steps:
 
 1. Open your terminal or command prompt.
 
-```
-ruby main.rb
-```
 2. Navigate to the directory where you have cloned or downloaded the Catalog of My Things repository.
 
 3. Run the following command to install any required dependencies (in this case, we assume there are no external dependencies, so this step may not be needed):
@@ -122,9 +119,7 @@ bundle install
 ruby main.rb
 ```
 
-3. The decoded message will be displayed as the output.
-
-4. If you have future features like GUI or interactive mode, follow the specific instructions provided for those features in the app's documentation.
+3.If you have future features like GUI or interactive mode, follow the specific instructions provided for those features in the app's documentation.
 
 ### Tests <a name="tests"></a>
 
@@ -144,7 +139,7 @@ gem install rspec
 rspec
 ```
 
-3. All tests should pass without any errors or failures, ensuring that the Solver class and its methods are functioning correctly.
+3. All tests should pass without any errors or failures, ensuring that the code and its methods are functioning correctly.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
