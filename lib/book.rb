@@ -42,7 +42,10 @@ class Book < Item
     author = input_author(authors)
 
     genre = Genre.new(genre_name)
-    return puts 'Invalid genre selection.' if genre.nil?
+    if genre.nil?
+      puts 'Invalid genre selection.'
+      return
+    end
 
     book = create_book(
       title: title,
@@ -91,7 +94,9 @@ class Book < Item
       end
 
       label = Label.new(id: 1, title: book_data['label_title'], color: book_data['label_color'])
-      genre = Genre.new(book_data['genre_name'])
+      genre_name = book_data['genre_name'] # Retrieve genre_name from JSON
+
+      genre = Genre.new(genre_name) # Create a new Genre instance
 
       Book.new(
         title: book_data['title'],
@@ -99,10 +104,32 @@ class Book < Item
         cover_state: book_data['cover_state'],
         published_date: Date.parse(book_data['published_date']),
         label: label,
-        genre: genre,
+        genre: genre, # Assign the genre instance
         author: author
       )
     end
+  end
+
+  private
+
+  def book_title
+    print 'Enter book title: '
+    gets.chomp
+  end
+
+  def input_publisher
+    print 'Enter publisher: '
+    gets.chomp
+  end
+
+  def input_cover_state
+    print 'Enter cover state (good/bad): '
+    gets.chomp
+  end
+
+  def input_genre_name
+    print 'Enter genre name: '
+    gets.chomp
   end
 
   def input_author(authors)
@@ -112,15 +139,18 @@ class Book < Item
     last_name = gets.chomp
 
     author = authors.find { |a| a.first_name == first_name && a.last_name == last_name }
-    author ||= Author.new(first_name, last_name)
-    authors << author
+    unless author
+      author = Author.new(first_name, last_name)
+      authors << author
+    end
 
     author
   end
 
   def input_published_date
     print 'Enter published date YYYY-MM-DD: '
-    Date.parse(gets.chomp)
+    date_input = gets.chomp
+    Date.parse(date_input)
   rescue ArgumentError
     puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
     retry
