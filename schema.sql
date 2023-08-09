@@ -42,7 +42,9 @@ CREATE TABLE music_albums (
 CREATE TABLE games (
     id SERIAL PRIMARY KEY,
     multiplayer VARCHAR(100) NOT NULL,
-    last_played_at DATE NOT NULL
+    last_played_at DATE NOT NULL,
+    item_id INTEGER NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE
 );
 
 CREATE TABLE books (
