@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class Genre
   attr_accessor :name
 
@@ -10,8 +12,9 @@ class Genre
   def add_item(new_item)
     return nil unless new_item.is_a?(Item)
 
-    @items << new_item
     new_item.genre = self
+    @items << new_item
+    @items
   end
 
   private
