@@ -4,7 +4,6 @@
   <h3><b>Catalog Of My Things</b></h3>
 </div>
 
-![catalog_of_my_things](https://github.com/microverseinc/curriculum-ruby/blob/main/group-capstone/images/catalog_of_my_things.png)
 
 <a name="readme-top"></a>
 
@@ -13,6 +12,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
+    - [🚀 Video Link](#video-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -50,48 +50,67 @@
   </ul>
 </details>
 
+## 🚀 Video Demo <a name="video-demo"></a>
+
+[Video Presentation](https://drive.google.com/file/d/1l-KCKq2f8UXtcCHCEynzYVW8McC7MPvv/view?usp=sharing)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 Catalog of my things is console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files.
-
 Created using Ruby!
+
+![catalog_of_my_things](https://github.com/microverseinc/curriculum-ruby/blob/main/group-capstone/images/catalog_of_my_things.png)
+
 ### Setup <a name="setup"></a>
 
 1. Ensure you have Ruby installed on your system. You can check your Ruby version in the terminal by running:
 
-```ruby -v```
+```
+ruby -v
+```
 
 If Ruby is not installed, you can download and install it from the official Ruby website.
 
 2. To get a local copy up and running, follow these steps.
 Choose the directory on your local machine where you want to copy project. For example:
-
-> cd /home/user/name-of-your-directory
+```
+cd /home/user/name-of-your-directory
+```
 
 Clone the project using one of the options.
 
 Using SSH-key:
-
-> git clone git@github.com:mrcbq/catalog-of-my-things.git
+```
+git clone git@github.com:mrcbq/catalog-of-my-things.git
+```
 
 Using HTTPS:
 
-> git clone https://github.com/mrcbq/catalog-of-my-things.git
-
+```
+git clone https://github.com/mrcbq/catalog-of-my-things.git
+```
 You can also create the new directory just adding the name of it in the end of command. For example:
 
-> git clone https://github.com/mrcbq/catalog-of-my-things.git catalog
-
+```
+git clone https://github.com/mrcbq/catalog-of-my-things.git catalog
+```
 ### Installation <a name="installation"></a>
 
 To run this project locally, follow these steps:
 
 1. Open your terminal or command prompt.
 
+```
+ruby main.rb
+```
 2. Navigate to the directory where you have cloned or downloaded the Catalog of My Things repository.
 
 3. Run the following command to install any required dependencies (in this case, we assume there are no external dependencies, so this step may not be needed):
-```bundle install```
+
+```
+bundle install
+```
 
 ### Usage <a name="usage"></a>
 
@@ -99,7 +118,9 @@ To run this project locally, follow these steps:
 
 2. To run the app, execute the following command:
 
-```ruby main.rb```
+```
+ruby main.rb
+```
 
 3. The decoded message will be displayed as the output.
 
@@ -107,7 +128,7 @@ To run this project locally, follow these steps:
 
 ### Tests <a name="tests"></a>
 
-To run the tests for the Solver class, ensure you are in the directory containing the test files.
+To run the tests ensure you are in the directory containing the test files.
 
 1. Install RSpec:
 
@@ -117,10 +138,10 @@ Once you have Ruby installed, you can use RubyGems (Ruby's package manager) to i
 gem install rspec
 ```
 
-2. Run the tests for the Solver class using the following command:
+2. Run the tests using the following command:
 
 ```
-rspec solver_spec.rb
+rspec
 ```
 
 3. All tests should pass without any errors or failures, ensuring that the Solver class and its methods are functioning correctly.
