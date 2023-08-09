@@ -32,7 +32,7 @@ class Book < Item
     end
   end
 
-  def add_book(books, labels, _genres, authors)
+  def add_book(books, labels, genres, authors)
     title = book_title
     publisher = input_publisher
     cover_state = input_cover_state
@@ -41,10 +41,10 @@ class Book < Item
     genre_name = input_genre_name
     author = input_author(authors)
 
-    genre = Genre.new(genre_name)
+    genre = genres.find { |g| g.name == genre_name }
     if genre.nil?
-      puts 'Invalid genre selection.'
-      return
+      genre = Genre.new(genre_name)
+      genres << genre
     end
 
     book = create_book(
@@ -94,9 +94,9 @@ class Book < Item
       end
 
       label = Label.new(id: 1, title: book_data['label_title'], color: book_data['label_color'])
-      genre_name = book_data['genre_name'] # Retrieve genre_name from JSON
+      genre_name = book_data['genre_name']
 
-      genre = Genre.new(genre_name) # Create a new Genre instance
+      genre = Genre.new(genre_name)
 
       Book.new(
         title: book_data['title'],
@@ -104,7 +104,7 @@ class Book < Item
         cover_state: book_data['cover_state'],
         published_date: Date.parse(book_data['published_date']),
         label: label,
-        genre: genre, # Assign the genre instance
+        genre: genre,
         author: author
       )
     end
