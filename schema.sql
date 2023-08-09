@@ -3,7 +3,9 @@ CREATE DATABASE catalog;
 CREATE TABLE authors (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
-    last_name VARCHAR(255)
+    last_name VARCHAR(255),
+    item_id INT,
+    FOREIGN KEY (item_id) REFERENCES items(id)
 );
 
 CREATE TABLE genres (
