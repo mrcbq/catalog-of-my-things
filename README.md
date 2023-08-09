@@ -1,8 +1,8 @@
-## Getting Started
+<a name="readme-top"></a>
 
-Catalog of my thins is console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files.
-
-Created using Ruby!
+<div align="center">
+  <h3><b>Catalog Of My Things</b></h3>
+</div>
 
 ![catalog_of_my_things](https://github.com/microverseinc/curriculum-ruby/blob/main/group-capstone/images/catalog_of_my_things.png)
 
@@ -38,15 +38,23 @@ Created using Ruby!
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Ruby</summary>
+<summary>Ruby</summary>
   <ul>
-    <li><a href="https://github.com/microverseinc/curriculum-ruby/blob/main/simple-ruby/articles/ruby_installation_instructions.md">Ruby instalation instructions</a></li>
+    <li><a href="https://www.ruby-lang.org/">Ruby</a></li>
+  </ul>
+</details>
+<details>
+<summary>Rspec</summary>
+  <ul>
+    <li><a href="https://rspec.info/">Rspec</a></li>
   </ul>
 </details>
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
+Catalog of my things is console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files.
 
+Created using Ruby!
 ### Setup <a name="setup"></a>
 
 1. Ensure you have Ruby installed on your system. You can check your Ruby version in the terminal by running:
