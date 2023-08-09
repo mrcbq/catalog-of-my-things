@@ -119,5 +119,16 @@
     "genre_name": "classic",
     "author_first_name": "ernest",
     "author_last_name": "hemingway"
+  },
+  {
+    "title": "Roo",
+    "publisher": "Mans",
+    "cover_state": "bad",
+    "published_date": "1955-05-05",
+    "label_title": "rrr",
+    "label_color": "Blue",
+    "genre_name": "Thriller",
+    "author_first_name": "Rrr",
+    "author_last_name": "Ff"
   }
 ]
