@@ -1,5 +1,6 @@
 require_relative 'item'
 require_relative 'label'
+require_relative 'genre'
 
 class Book < Item
   attr_accessor :publisher, :cover_state, :label, :genre, :author, :title
@@ -24,22 +25,24 @@ class Book < Item
         puts "Book ID: #{book.instance_variable_get(:@id)}"
         puts "Book Name: #{book.title}"
         puts "Author: #{book.author.first_name} #{book.author.last_name}"
-        puts "Genre: #{book.genre}"
+        puts "Genre: #{book.genre.name}"
         puts "Published by: #{book.publisher} on: #{book.published_date}"
         puts "Color: #{book.label.color}\n"
       end
     end
   end
 
-  def add_book(books, labels, genres, authors)
+  def add_book(books, labels, _genres, authors)
     title = book_title
     publisher = input_publisher
     cover_state = input_cover_state
     published_date = input_published_date
     label = input_label(labels)
-    genre = input_genre(genres)
-    genre&.name
+    genre_name = input_genre_name
     author = input_author(authors)
+
+    genre = Genre.new(genre_name)
+    return puts 'Invalid genre selection.' if genre.nil?
 
     book = create_book(
       title: title,
@@ -50,6 +53,7 @@ class Book < Item
       genre: genre,
       author: author
     )
+
     books << book
     puts 'Book added successfully!'
   end
@@ -63,7 +67,7 @@ class Book < Item
         published_date: book.published_date.to_s,
         label_title: book.label.title,
         label_color: book.label.color,
-        genre_name: book.genre,
+        genre_name: book.genre.name,
         author_first_name: book.author.first_name,
         author_last_name: book.author.last_name
       }
@@ -87,7 +91,7 @@ class Book < Item
       end
 
       label = Label.new(id: 1, title: book_data['label_title'], color: book_data['label_color'])
-      genre = Genre.new(name: book_data['genre_name'])
+      genre = Genre.new(book_data['genre_name'])
 
       Book.new(
         title: book_data['title'],
@@ -101,30 +105,6 @@ class Book < Item
     end
   end
 
-  private
-
-  def book_title
-    print 'Enter book title: '
-    gets.chomp
-  end
-
-  def input_publisher
-    print 'Enter publisher: '
-    gets.chomp
-  end
-
-  def input_cover_state
-    print 'Enter cover state (good/bad): '
-    gets.chomp
-  end
-
-  def input_genre(genres)
-    print 'Select a genre:'
-    genres.each_with_index { |genre, index| puts "#{index + 1}. #{genre.name}" }
-    genre_index = gets.chomp.to_i - 1
-    genres[genre_index] if (0...genres.length).include?(genre_index)
-  end
-
   def input_author(authors)
     print 'Enter author first name:'
     first_name = gets.chomp
@@ -132,18 +112,15 @@ class Book < Item
     last_name = gets.chomp
 
     author = authors.find { |a| a.first_name == first_name && a.last_name == last_name }
-    unless author
-      author = Author.new(first_name, last_name)
-      authors << author
-    end
+    author ||= Author.new(first_name, last_name)
+    authors << author
 
     author
   end
 
   def input_published_date
     print 'Enter published date YYYY-MM-DD: '
-    date_input = gets.chomp
-    Date.parse(date_input)
+    Date.parse(gets.chomp)
   rescue ArgumentError
     puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
     retry
