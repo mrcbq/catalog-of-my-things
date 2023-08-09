@@ -29,7 +29,7 @@ class Menu
     loop do
       main_menu
       puts
-      print 'Choice: '
+      print 'Please select an correct option: '
       choice = gets.chomp.to_i
       user_choice(choice)
       puts ''.center(50, '*')
@@ -43,9 +43,7 @@ class Menu
 
   def user_choice(choice)
     selected_option = @options[choice]
-    selected_option = @options[10] if selected_option.nil?
-
-    @app.send(selected_option)
+    selected_option.nil? ? main_menu : @app.send(selected_option)
   end
 
   def option_to_text(option)
