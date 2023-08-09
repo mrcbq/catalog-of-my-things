@@ -16,7 +16,7 @@ class Item
 
   def genre=(new_genre)
     @genre = new_genre
-    genre.add_item(self)
+    new_genre.add_item(self)
   end
 
   def author=(new_author)
@@ -25,8 +25,10 @@ class Item
   end
 
   def label=(new_label)
+    return if @label == new_label
+
     @label = new_label
-    label.add_item(self)
+    new_label&.add_item(self)
   end
 
   def archived?
