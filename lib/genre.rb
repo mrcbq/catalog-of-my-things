@@ -10,7 +10,7 @@ class Genre
   end
 
   def add_item(new_item)
-    return nil unless new_item.is_a?(Item)
+    return if new_item.genre
 
     new_item.genre = self
     @items << new_item
