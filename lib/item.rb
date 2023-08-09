@@ -25,8 +25,12 @@ class Item
   end
 
   def label=(new_label)
+    return if @label == new_label
+
+    @label&.remove_item(self)
+
     @label = new_label
-    label.add_item(self)
+    new_label&.add_item(self)
   end
 
   def archived?
