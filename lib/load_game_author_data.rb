@@ -5,7 +5,7 @@ def load_games
   stored_games = begin
     JSON.parse(File.read('games.json'))
   rescue StandardError => e
-    puts "Error reading 'rental.json': #{e.message}"
+    puts "Error reading 'games.json': #{e.message}"
     []
   end
   games = []
