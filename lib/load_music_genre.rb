@@ -22,7 +22,7 @@ def load_genre
   stored_genre = begin
     JSON.parse(File.read('genres.json'))
   rescue StandardError => e
-    puts "Error reading 'genre.json': #{e.message}"
+    puts "Error reading 'genres.json': #{e.message}"
     []
   end
   genres = []
