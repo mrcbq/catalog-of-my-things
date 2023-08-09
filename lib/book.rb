@@ -32,7 +32,7 @@ class Book < Item
     end
   end
 
-  def add_book(books, labels, _genres, authors)
+  def add_book(books, labels, genres, authors)
     title = book_title
     publisher = input_publisher
     cover_state = input_cover_state
@@ -41,10 +41,10 @@ class Book < Item
     genre_name = input_genre_name
     author = input_author(authors)
 
-    genre = Genre.new(genre_name)
+    genre = genres.find { |g| g.name == genre_name }
     if genre.nil?
-      puts 'Invalid genre selection.'
-      return
+      genre = Genre.new(genre_name)
+      genres << genre
     end
 
     book = create_book(

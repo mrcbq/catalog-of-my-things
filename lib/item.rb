@@ -16,7 +16,7 @@ class Item
 
   def genre=(new_genre)
     @genre = new_genre
-    new_genre.add_item(self)
+    genre.add_item(self)
   end
 
   def author=(new_author)

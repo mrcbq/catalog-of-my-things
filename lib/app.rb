@@ -97,20 +97,28 @@ class App
     puts 'Add a game'
     print 'Multiplayer: '
     player = gets.chomp.capitalize
-    print "Please enter a date Last played at 'YYYY-MM-DD': "
-    input = gets.chomp.strip
+    input = input_date
     game = Game.new(player, input)
     @games << game
     puts 'Successfully created a game!'
     puts
   end
 
+  def input_date
+    print "Please enter a date Last played at 'YYYY-MM-DD': "
+    date_input = gets.chomp
+    Date.parse(date_input)
+  rescue ArgumentError
+    puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
+    retry
+  end
+
   def exit_program
+    puts 'Exiting the program...'
     save_labels
     save_books
     save_games
     save_authors
-    puts 'Exiting the program...'
     save_music_albums
     save_genres
     exit
