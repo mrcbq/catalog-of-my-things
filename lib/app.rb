@@ -17,8 +17,8 @@ class App
   def initialize
     @music_albums = load_music_albums
     @genres = load_genre
-    @books = []
-    @labels = []
+    @books = Book.load_all_books
+    @labels = Label.load_all_labels
     @games = load_games
     @authors = load_authors
   end
@@ -70,7 +70,15 @@ class App
 
   def add_book
     book = Book.new
-    book.add_book(@books, @labels)
+    book.add_book(@books, @labels, @genres, @authors)
+  end
+
+  def save_books
+    Book.save_all_books(@books)
+  end
+
+  def save_labels
+    Label.save_all_labels(@labels)
   end
 
   def list_of_games
@@ -81,7 +89,7 @@ class App
 
   def list_all_authors
     puts ''.center(50, '*')
-    puts 'The list is empty, please create a author!' if @authors.empty?
+    puts 'The list is empty, please create an author!' if @authors.empty?
     @authors.each { |ele| puts "First Name: #{ele.first_name}, Last Name: #{ele.last_name}" }
   end
 
@@ -89,18 +97,28 @@ class App
     puts 'Add a game'
     print 'Multiplayer: '
     player = gets.chomp.capitalize
-    print "Please enter a date Last played at 'YYYY-MM-DD': "
-    input = gets.chomp.strip
+    input = input_date
     game = Game.new(player, input)
     @games << game
     puts 'Successfully created a game!'
     puts
   end
 
+  def input_date
+    print "Please enter a date Last played at 'YYYY-MM-DD': "
+    date_input = gets.chomp
+    Date.parse(date_input)
+  rescue ArgumentError
+    puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
+    retry
+  end
+
   def exit_program
+    puts 'Exiting the program...'
+    save_labels
+    save_books
     save_games
     save_authors
-    puts 'Exiting the program...'
     save_music_albums
     save_genres
     exit
