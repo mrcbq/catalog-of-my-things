@@ -26,7 +26,8 @@ class Book < Item
         puts "Book Name: #{book.title}"
         puts "Author: #{book.author.first_name} #{book.author.last_name}"
         puts "Genre: #{book.genre.name}"
-        puts "Published by: #{book.publisher} on: #{book.published_date}"
+        puts "Published by: #{book.publisher}, on #{book.published_date}"
+        puts "Cover state is #{book.cover_state}"
         puts "Color: #{book.label.color}\n"
       end
     end
