@@ -47,34 +47,75 @@ Created using Ruby!
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-Catalog of my Things.
+### Setup <a name="setup"></a>
 
-### Prerequisites
+1. Ensure you have Ruby installed on your system. You can check your Ruby version in the terminal by running:
 
-In order to run this project you need:
+```ruby -v```
 
-Ruby 3.0.1
+If Ruby is not installed, you can download and install it from the official Ruby website.
 
-### Setup
+2. To get a local copy up and running, follow these steps.
+Choose the directory on your local machine where you want to copy project. For example:
 
-Clone this repository to your desired folder:
+> cd /home/user/name-of-your-directory
 
+Clone the project using one of the options.
 
-### Install
+Using SSH-key:
 
-You don't need to install this project.
+> git clone git@github.com:mrcbq/catalog-of-my-things.git
 
-### Usage
+Using HTTPS:
 
-run ruby catalog-of-my-things.rb
+> git clone https://github.com/mrcbq/catalog-of-my-things.git
 
-### Run tests
+You can also create the new directory just adding the name of it in the end of command. For example:
 
-No testing implemented yet
+> git clone https://github.com/mrcbq/catalog-of-my-things.git catalog
 
-### Deployment
+### Installation <a name="installation"></a>
 
-No deployment implemented yet
+To run this project locally, follow these steps:
+
+1. Open your terminal or command prompt.
+
+2. Navigate to the directory where you have cloned or downloaded the Catalog of My Things repository.
+
+3. Run the following command to install any required dependencies (in this case, we assume there are no external dependencies, so this step may not be needed):
+```bundle install```
+
+### Usage <a name="usage"></a>
+
+1. Once the setup is complete, ensure you are still in the directory containing the Catalog of My Things files.
+
+2. To run the app, execute the following command:
+
+```ruby main.rb```
+
+3. The decoded message will be displayed as the output.
+
+4. If you have future features like GUI or interactive mode, follow the specific instructions provided for those features in the app's documentation.
+
+### Tests <a name="tests"></a>
+
+To run the tests for the Solver class, ensure you are in the directory containing the test files.
+
+1. Install RSpec:
+
+Once you have Ruby installed, you can use RubyGems (Ruby's package manager) to install RSpec. Open your terminal or command prompt and run the following command:
+
+```
+gem install rspec
+```
+
+2. Run the tests for the Solver class using the following command:
+
+```
+rspec solver_spec.rb
+```
+
+3. All tests should pass without any errors or failures, ensuring that the Solver class and its methods are functioning correctly.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
