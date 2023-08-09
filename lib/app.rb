@@ -97,20 +97,20 @@ class App
     puts 'Add a game'
     print 'Multiplayer: '
     player = gets.chomp.capitalize
-    input = input_date
-    game = Game.new(player, input)
+    print 'Enter date last played YYYY-MM-DD: '
+    date_input = gets.chomp
+    begin
+      played_date = Date.parse(date_input)
+      current_date = Date.today
+      difference = (current_date - played_date).to_i / 365
+      puts "The game was played #{difference} years ago"
+    rescue ArgumentError
+      puts 'invalid date format. Please enter the date in YYYY-MM-DD format'
+    end
+    game = Game.new(player, played_date)
     @games << game
     puts 'Successfully created a game!'
     puts
-  end
-
-  def input_date
-    print "Please enter a date Last played at 'YYYY-MM-DD': "
-    date_input = gets.chomp
-    Date.parse(date_input)
-  rescue ArgumentError
-    puts 'Invalid date format. Please enter the date in YYYY-MM-DD format'
-    retry
   end
 
   def exit_program
