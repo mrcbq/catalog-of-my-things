@@ -7,13 +7,9 @@ class Book < Item
 
   def initialize(options = {})
     super(published_date: options[:published_date])
-    @title = options[:title]
-    @publisher = options[:publisher]
+    @title, @publisher, @cover_state, @label, @genre, @author =
+      options.values_at(:title, :publisher, :cover_state, :label, :genre, :author)
     @id = Random.rand(1..1000)
-    @cover_state = options[:cover_state]
-    @label = options[:label]
-    @genre = options[:genre]
-    @author = options[:author]
   end
 
   def self.list_all_books(books)
@@ -26,7 +22,8 @@ class Book < Item
         puts "Book Name: #{book.title}"
         puts "Author: #{book.author.first_name} #{book.author.last_name}"
         puts "Genre: #{book.genre.name}"
-        puts "Published by: #{book.publisher} on: #{book.published_date}"
+        puts "Published by #{book.publisher} on #{book.published_date}"
+        puts "Cover state: #{book.cover_state}"
         puts "Color: #{book.label.color}\n"
       end
     end
@@ -123,8 +120,13 @@ class Book < Item
   end
 
   def input_cover_state
-    print 'Enter cover state (good/bad): '
-    gets.chomp
+    loop do
+      print 'Enter cover state (good/bad): '
+      cover_state = gets.chomp.downcase
+      return cover_state if %w[good bad].include?(cover_state)
+
+      puts 'Invalid input. Please enter either "good" or "bad" for the cover state.'
+    end
   end
 
   def input_genre_name
@@ -178,8 +180,6 @@ class Book < Item
       author: options[:author]
     )
   end
-
-  attr_reader :id
 
   def can_be_archived?
     super || @cover_state == 'bad'
