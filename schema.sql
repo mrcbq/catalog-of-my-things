@@ -1,11 +1,12 @@
+DROP DATABASE IF EXISTS catalog;
+DROP TABLE IF EXISTS music_albums, games, books, items, labels, genres, authors;
+
 CREATE DATABASE catalog;
 
 CREATE TABLE authors (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    item_id INT,
-    FOREIGN KEY (item_id) REFERENCES items(id)
+    last_name VARCHAR(255)
 );
 
 CREATE TABLE genres (
@@ -26,16 +27,16 @@ CREATE TABLE items (
     genre_id INT,
     author_id INT,
     label_id INT,
-    FOREIGN KEY (genre_id) REFERENCES genres(id),
-    FOREIGN KEY (author_id) REFERENCES authors(id),
-    FOREIGN KEY (label_id) REFERENCES labels(id)
+    FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE SET NULL,
+    FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE SET NULL,
+    FOREIGN KEY (label_id) REFERENCES labels(id) ON DELETE SET NULL
 );
 
 CREATE TABLE music_albums (
     id SERIAL PRIMARY KEY,
     on_spotify BOOLEAN NOT NULL,
-    item_id INT,
-    FOREIGN KEY (item_id) REFERENCES items(id)
+    item_id INT NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE
 );
 
 CREATE TABLE games (
@@ -53,7 +54,7 @@ CREATE TABLE books (
     genre_id INT,
     author_id INT,
     published_date DATE,
-    FOREIGN KEY (label_id) REFERENCES labels(id),
-    FOREIGN KEY (genre_id) REFERENCES genres(id),
-    FOREIGN KEY (author_id) REFERENCES authors(id)
+    FOREIGN KEY (label_id) REFERENCES labels(id) ON DELETE SET NULL,
+    FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE SET NULL,
+    FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE SET NULL
 );
